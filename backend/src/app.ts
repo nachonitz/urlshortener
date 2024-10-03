@@ -1,5 +1,5 @@
 import express from "express";
-import accountRoutes from "./infrastructure/routes/accountRoutes";
+import shorturlRoutes from "./infrastructure/routes/shorturlRoutes";
 import "reflect-metadata";
 import cors from "cors";
 import AppDataSource from "./infrastructure/typeorm/typeorm.config";
@@ -15,7 +15,7 @@ AppDataSource.initialize()
   .then(() => {
     app.use(cors(corsOptions));
     app.use(express.json());
-    app.use("/shorturl", accountRoutes);
+    app.use("/shorturl", shorturlRoutes);
   })
   .catch((error: any) => console.log("Error initializing DataSource", error));
 
