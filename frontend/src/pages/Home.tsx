@@ -28,7 +28,7 @@ const Home = () => {
         setShortenedUrl(`${uiUrl}/${shortenedUrl}`);
         reset();
       })
-      .catch((error) => {
+      .catch((_error) => {
         setCreatingShorturl(false);
         setError("An error occurred. Please try again.");
         reset();
