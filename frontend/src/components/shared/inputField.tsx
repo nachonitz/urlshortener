@@ -1,17 +1,14 @@
 import React from "react";
-import { FieldError } from "react-hook-form";
 
 interface InputFieldProps {
   type: string;
   placeholder: string;
-  error?: FieldError;
   register: any;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
   type,
   placeholder,
-  error,
   register,
 }) => {
   return (

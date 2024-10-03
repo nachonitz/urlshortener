@@ -17,7 +17,7 @@ const Home = () => {
   const [creatingShorturl, setCreatingShorturl] = useState<boolean>(false);
   const [shortenedUrl, setShortenedUrl] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const handleRegister = async (data: CreateShortUrlDto) => {
     setCreatingShorturl(true);
     createShortUrl(data)
@@ -76,7 +76,6 @@ const Home = () => {
                     <InputField
                       type="string"
                       placeholder="Enter link here"
-                      error={errors.longUrl}
                       register={register("longUrl")}
                     />
                   </div>

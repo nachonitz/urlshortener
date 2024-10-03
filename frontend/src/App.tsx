@@ -1,4 +1,3 @@
-import Header from "./components/shared/header";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Redirect from "./pages/Redirect";
