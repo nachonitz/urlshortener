@@ -5,7 +5,7 @@ import cors from "cors";
 import AppDataSource from "./infrastructure/typeorm/typeorm.config";
 
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173", "https://shortear.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
