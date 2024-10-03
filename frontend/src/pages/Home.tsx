@@ -17,8 +17,10 @@ const Home = () => {
   const [creatingShorturl, setCreatingShorturl] = useState<boolean>(false);
   const [shortenedUrl, setShortenedUrl] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const handleRegister = async (data: CreateShortUrlDto) => {
+    setError(null);
+    setShortenedUrl(null);
     setCreatingShorturl(true);
     createShortUrl(data)
       .then((shortenedUrl) => {
@@ -28,7 +30,7 @@ const Home = () => {
       })
       .catch((error) => {
         setCreatingShorturl(false);
-        setError(error?.message?.toString());
+        setError("An error occurred. Please try again.");
         reset();
       });
   };
@@ -86,19 +88,19 @@ const Home = () => {
                 </div>
               </form>
 
-              {errors.longUrl && (
+              {(errors.longUrl || error) && (
                 <motion.div
-                  key={errors.longUrl.message}
+                  key={(errors?.longUrl?.message || error) as string}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                   className="p-4 bg-red-500 rounded-md shadow-md text-white"
                 >
-                  <p>{errors.longUrl.message}</p>
+                  <p>{errors?.longUrl?.message || error}</p>
                 </motion.div>
               )}
 
-              {shortenedUrl && !errors.longUrl && (
+              {shortenedUrl && !errors.longUrl && !error && (
                 <motion.div
                   key={shortenedUrl}
                   initial={{ opacity: 0, y: 20 }}
